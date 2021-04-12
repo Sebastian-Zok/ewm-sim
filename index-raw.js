@@ -1,3 +1,3 @@
 var server = require('./mockserver')
-server.initWithOrderroutine()
+server.init()
 

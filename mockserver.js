@@ -1189,7 +1189,7 @@ module.exports = {
 
 				// handle authentication
 				if (process.env.ODATA_USER && process.env.ODATA_PASSWD) {
-					var auth = (basicAuth({
+					app.use(basicAuth({
 						authorizer: (username, password) => {
 							const userMatches = basicAuth.safeCompare(username, process.env.ODATA_USER)
 							const passwordMatches = basicAuth.safeCompare(password, process.env.ODATA_PASSWD)
@@ -1203,7 +1203,7 @@ module.exports = {
 				logger.info("created express-app with body-parser and authentication")
 
 				// forward HTTP-requests to MockServer
-				app.all('/odata/SAP/ZEWM_ROBCO_SRV/*', auth, function (req, res) {
+				app.all('/odata/SAP/ZEWM_ROBCO_SRV/*', function (req, res) {
 					logger.debug(req.method + "\t" + req.url)
 					window.jQuery.ajax({
 						method: req.method,
@@ -1223,14 +1223,6 @@ module.exports = {
 								.send(jqXHR.responseText)
 						}
 					})
-				})
-
-				app.get('/healthz', function (req, res) {
-					res.status(200).end()
-				})
-
-				app.get('/readyz', function (req, res) {
-					res.status(200).end()
 				})
 
 				// start webservice on process.env.ODATA_PORT (default: 8080)

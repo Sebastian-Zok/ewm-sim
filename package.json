@@ -1,9 +1,10 @@
 {
-	"name": "ewm-sim",
+	"name": "odata-mock-server",
 	"version": "1.0.0",
 	"description": "standalone odata mock server based on sapui5 MockServer",
 	"scripts": {
 		"start": "node index.js",
+		"raw": "node index-raw.js",
 		"test": "nyc mocha --timeout 30000",
 		"coverage": "nyc report --reporter=text-lcov | coveralls",
 		"nyan": "mocha --reporter nyan --timeout 30000",
@@ -27,11 +28,19 @@
 		"mocha": "^8.2.1",
 		"nyc": "^15.1.0"
 	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/yschiebelhut/odata-mock-server.git"
+	},
 	"keywords": [
 		"odata",
 		"server",
 		"mock"
 	],
-	"author": "Schiebelhut, Yannik; Zok, Sebastian",
-	"license": "APLv2"
+	"author": "Yannik Schiebelhut",
+	"license": "MIT",
+	"bugs": {
+		"url": "https://github.com/yschiebelhut/odata-mock-server/issues"
+	},
+	"homepage": "https://github.com/yschiebelhut/odata-mock-server#readme"
 }
